@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" language="groovy" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="017fe181-cd8c-4cdf-8a13-3149e2453661">
+	<property name="ireport.zoom" value="0.75"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="114"/>
+	<parameter name="nomAgence" class="java.lang.String"/>
+	<parameter name="adresseAgence" class="java.lang.String"/>
+	<parameter name="telAgence" class="java.lang.String"/>
+	<parameter name="emailAgence" class="java.lang.String"/>
+	<parameter name="idLocation" class="java.lang.String"/>
+	<parameter name="idClient" class="java.lang.String"/>
+	<parameter name="idVehicule" class="java.lang.String"/>
+	<parameter name="logoLocation" class="Object" isForPrompting="false">
+		<parameterDescription><![CDATA[The letterhead image]]></parameterDescription>
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT * from Location,Client,Vehicule where Location.IDClient = Client.IDClient
+AND Location.IDVehicule = Vehicule.IDVehicule AND IDLocation=$P{idLocation} AND Location.IDClient=$P{idClient} AND Location.IDVehicule=$P{idVehicule};]]>
+	</queryString>
+	<field name="IDLocation" class="java.lang.Object"/>
+	<field name="IDClient" class="java.lang.Object"/>
+	<field name="IDVehicule" class="java.lang.Object"/>
+	<field name="DateSortie" class="java.lang.Object"/>
+	<field name="NombreJours" class="java.lang.Object"/>
+	<field name="DateEntree" class="java.lang.Object"/>
+	<field name="HeureSortie" class="java.lang.Object"/>
+	<field name="HeureEntree" class="java.lang.Object"/>
+	<field name="MontantApaye" class="java.lang.Object"/>
+	<field name="TarifSupp" class="java.lang.Object"/>
+	<field name="Tva" class="java.lang.Object"/>
+	<field name="remise" class="java.lang.Object"/>
+	<field name="TypeClient" class="java.lang.Object"/>
+	<field name="NomSociete" class="java.lang.Object"/>
+	<field name="Nom" class="java.lang.Object"/>
+	<field name="Prenom" class="java.lang.Object"/>
+	<field name="DateNaiss" class="java.lang.Object"/>
+	<field name="LieuNaiss" class="java.lang.Object"/>
+	<field name="NumPasseport" class="java.lang.Object"/>
+	<field name="DatePasseport" class="java.lang.Object"/>
+	<field name="NumPermis" class="java.lang.Object"/>
+	<field name="DatePermis" class="java.lang.Object"/>
+	<field name="NumTel" class="java.lang.Object"/>
+	<field name="Adresse" class="java.lang.Object"/>
+	<field name="Email" class="java.lang.Object"/>
+	<field name="Remarques" class="java.lang.Object"/>
+	<field name="IDMarque" class="java.lang.Object"/>
+	<field name="NumChassis" class="java.lang.Object"/>
+	<field name="Matricule" class="java.lang.Object"/>
+	<field name="DateAssur" class="java.lang.Object"/>
+	<field name="ProchAssur" class="java.lang.Object"/>
+	<field name="DateScanner" class="java.lang.Object"/>
+	<field name="ProchScanner" class="java.lang.Object"/>
+	<field name="Kilometrage" class="java.lang.Object"/>
+	<field name="ProchVidange" class="java.lang.Object"/>
+	<field name="derniereChaine" class="java.lang.Object"/>
+	<field name="ProchChaine" class="java.lang.Object"/>
+	<field name="tarifJour" class="java.lang.Object"/>
+	<field name="NiveauCarburant" class="java.lang.Object"/>
+	<field name="modele" class="java.lang.Object"/>
+	<field name="statut" class="java.lang.Object"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="103" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="15" width="555" height="27" backcolor="#C0C0C0" uuid="d300d2be-f039-4029-a50d-5fb71e82b653"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Informations de l'agence]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="2" y="41" width="78" height="20" backcolor="#C0C0C0" uuid="e396cba0-e10f-4bd6-9278-455611872f1a"/>
+				<textElement textAlignment="Center">
+					<font fontName="DejaVu Sans" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Agence  :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="2" y="71" width="78" height="21" backcolor="#C0C0C0" uuid="85a9fe33-7059-4849-b4b3-53caaac6b595"/>
+				<textElement textAlignment="Center">
+					<font fontName="DejaVu Sans" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Adresse :]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="86" y="41" width="216" height="22" uuid="de74cd59-3094-48be-bc08-e5fed92dee25"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{nomAgence}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="87" y="71" width="216" height="22" uuid="b2a4abc7-d149-44a8-8930-b9d539bb0545"/>
+				<textElement>
+					<font fontName="Arial" size="11" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{adresseAgence}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Transparent" x="304" y="41" width="76" height="20" backcolor="#C0C0C0" uuid="9d05146e-e3be-424c-b4f9-0cb3a8a04795"/>
+				<textElement textAlignment="Center">
+					<font fontName="DejaVu Sans" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[N°TEL ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="305" y="71" width="76" height="20" backcolor="#C0C0C0" uuid="3b5d85a2-96b7-4576-84ef-0ab88870d7b4"/>
+				<textElement textAlignment="Center">
+					<font fontName="DejaVu Sans" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[N°registre:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="385" y="41" width="170" height="22" uuid="4bb4236c-5040-4213-944e-5d3893d9673c"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{telAgence}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="385" y="71" width="170" height="22" uuid="cd2d6115-0688-4d0d-97f8-32c45a4efd52"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{emailAgence}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="212">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="-5" width="555" height="27" backcolor="#C0C0C0" uuid="8283f630-6337-48df-bef1-ca8190dac9ed"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[شروط وكالة كراء السيارات]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="21" width="510" height="188" uuid="6f7bd4ad-d89f-4c16-9ddd-3d543436602a"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[- المستأجر ليس له الحق بأي حال من الأحوال في بيع السيارة أو التصرف فيها. أو نقل أشخاص أكثر من المدونة في البطاقة الرمادية للسيارة أو جر مقطورة. أو نقل البضائع و السلع و الكحول و المخدرات و المواد الممنوعة التي يعاقب عليها القانون الجزائري. أو سياقة السيارة في حالة سكر و تعاطي المخدرات على متنها. - العطب الميكانيكي العادي يكون على عاتق الوكالة. وكل عطب ناجم عن اهمال المستأجر يتحمل مصاريف  قطع الغيار  والتصليح و مدة توقف السيارة. و في حالة سرقة السيارة أو احتراقها المستأجر هو المسؤول عن تعويض ثمن السيارة. و في  حالة حادث سير و تضرر السيارة على المستأجر ان يدفع ثمن  فاتورة التصليح كاملة اضافة الى ثمن مدة توقفها وان اقتضى الأمر ثمن السيارة كلها.
+- لا تتحمل الوكالة المسؤولية في حالة الضرر الواقع للأشخاص بفعل الحادث.
+- الوكالة ليست المسؤولة عن التصريحات الكادبة من المستأجر حول هويته و رخصة السياقة ان كانت مزورة. وفي حالة      مخالفات أو تجاوزات غير قانونية عند مدة عقد المستأجر. عدم السماح لأي كان قيادة السيارة الا من لديه تسريح من الوكالة.
+- المستأجر له الحق 400 كلم في 24 ساعة أما مصاريف التأخر في الوقت محددة فيما يلي كل ساعة تأخر زيادة 500 دج وكل كيلومتر             زائد 10 دج. عند انتهاء المدة الزمنية في العقد ارجاع السيارة نضيفه و الوقود فوق النصف والا تطبق عليه مصاريف 2000 دج.
+- عدم استعمال السيارة في الطرق الوعرة و الورشات و العواصف الرملية. 
+- كل النزاعات الناتجة بين الوكالة و المستأجر تبقى من صلاحيات المحكمة]]></text>
+			</staticText>
+		</band>
+		<band height="18">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="-10" width="555" height="27" backcolor="#C0C0C0" uuid="6eb1ea8b-d571-411c-8bd3-5f152e090604"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Conditions de l'agence de location de voiture]]></text>
+			</staticText>
+		</band>
+		<band height="325">
+			<staticText>
+				<reportElement x="20" y="0" width="510" height="300" uuid="b9823468-d7c1-4ad3-94e4-2a2b60019506"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[- Le locataire n'a aucun droit de vendre ou d’agire le véhicule. Ou déplacez plus de personnes du code dans       la carte grise de la voiture ou de la remorque. Ou le transport de biens, biens, alcools, drogues et substanc interdites, punissables par la loi algérienne. Ou conduire la voiture ivre et prendre de la drogue à bord.      
+- Les dommages mécaniques normaux sont à la charge de l'Agence. Tout dommage causé par la négligence   du locataire doit supporter les frais de pièces de rechange, les réparations et la durée de l'interruption du véhicule. En cas de vol ou de combustion du véhicule, le locataire est responsable de la compensation du  prix  du véhicule. En cas d'accident de la circulation et de détérioration de la voiture, le locataire doit payer   intégralement le prix de la facture de réparation, en plus du prix de l'heure d'arrêt et, le cas échéant, du total de la voiture. 
+- L’Agence ne peut être tenue pour responsable en cas de dommages corporels causés par l’accident.       
+- L'agence n'est pas responsable des déclarations faisant autorité du locataire concernant son identité et son permis de conduire si elles ont été falsifiées. Et en cas d'irrégularités ou d'irrégularités pendant la durée du  contrat du locataire. Ne permettant à aucun conducteur de conduire à moins qu'il ne soit libéré de l'agence.    
+- Le locataire a le droit de 400 km en 24 heures et les délais sont les suivants: Chaque heure de retard augmente de 500 dj et chaque kilomètre plus 10 dj. A la fin de la période contractuelle, restituer la voiture et ajouter le carburant au-dessus de la moitié et ne pas appliquer les frais de 2000 dj.                                 
+ - Ne pas utiliser la voiture dans les ateliers tout-terrain et les tempêtes de sable.                                          - Tous les différends entre l’Agence et le locataire restent de la compétence de la Cour.]]></text>
+			</staticText>
+		</band>
+		<band height="144">
+			<rectangle>
+				<reportElement x="14" y="-23" width="264" height="160" uuid="ae2a30b0-112d-4cdc-aa7a-4c39d765820e"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="278" y="-23" width="263" height="160" uuid="19c72f75-6c10-4275-b080-f7c08b58610e"/>
+			</rectangle>
+			<staticText>
+				<reportElement mode="Transparent" x="100" y="-23" width="90" height="20" backcolor="#C0C0C0" uuid="c75b0103-b307-4b96-b39c-8906507a0f42"/>
+				<textElement textAlignment="Center">
+					<font fontName="DejaVu Sans" size="12"/>
+				</textElement>
+				<text><![CDATA[LE LOUEUR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="363" y="-23" width="90" height="20" backcolor="#C0C0C0" uuid="b31eb59c-a39c-48b3-9460-3228e30e1fb2"/>
+				<textElement textAlignment="Center">
+					<font fontName="DejaVu Sans" size="12"/>
+				</textElement>
+				<text><![CDATA[LE LOCATAIRE]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="20" y="-1" width="192" height="22" uuid="63f08e3a-a4e8-4b55-8b0f-d147bd929ed2"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{nomAgence}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="283" y="-1" width="192" height="22" uuid="56f89eed-7bba-45d8-ad5e-40d496c302e6"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Nom}+" "+$F{Prenom}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="20" y="112" width="100" height="20" uuid="88f0c6b8-dda0-4077-9360-54dfdb1fde16"/>
+				<text><![CDATA[Signature]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="283" y="112" width="100" height="20" uuid="a4e3782f-11e9-4644-b1e2-32fa9f7d0dea"/>
+				<text><![CDATA[Signature]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

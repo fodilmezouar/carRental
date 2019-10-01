@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/Users/fodil/NetBeansProjects/Location%20Voiture%20v2/src/locationcar/clients/ModifierClientController.java</file>
+            <file>file:/Users/fodil/NetBeansProjects/Location%20Voiture%20v2/src/locationcar/dataBase/DataBase.java</file>
+            <file>file:/Users/fodil/NetBeansProjects/Location%20Voiture%20v2/src/locationcar/view/ModifierClient.fxml</file>
+            <file>file:/Users/fodil/NetBeansProjects/Location%20Voiture%20v2/src/locationcar/locations/LocationsController.java</file>
+            <file>file:/Users/fodil/NetBeansProjects/Location%20Voiture%20v2/src/locationcar/Modele/VehiculeCmb.java</file>
+            <file>file:/Users/fodil/NetBeansProjects/Location%20Voiture%20v2/src/locationcar/locations/OptionsLocation/ProlongerController.java</file>
+            <file>file:/Users/fodil/NetBeansProjects/Location%20Voiture%20v2/src/locationcar/dashboard/parametre/SettingController.java</file>
+            <file>file:/Users/fodil/NetBeansProjects/Location%20Voiture%20v2/src/locationcar/dashboard/notification/NotificationController.java</file>
+            <file>file:/Users/fodil/NetBeansProjects/Location%20Voiture%20v2/src/locationcar/initApp/InitAppController.java</file>
+            <file>file:/Users/fodil/NetBeansProjects/Location%20Voiture%20v2/src/locationcar/LocationCar.java</file>
+            <file>file:/Users/fodil/NetBeansProjects/Location%20Voiture%20v2/src/locationcar/locations/OptionsLocation/RendreController.java</file>
+            <file>file:/Users/fodil/NetBeansProjects/Location%20Voiture%20v2/src/locationcar/Modele/Client.java</file>
+            <file>file:/Users/fodil/NetBeansProjects/Location%20Voiture%20v2/src/locationcar/locations/ModifierLocationController.java</file>
+            <file>file:/Users/fodil/NetBeansProjects/Location%20Voiture%20v2/src/locationcar/PrintReport.java</file>
+            <file>file:/Users/fodil/NetBeansProjects/Location%20Voiture%20v2/src/locationcar/vehicules/ModifierVehiculeController.java</file>
+        </group>
+    </open-files>
+</project-private>

@@ -1,0 +1,704 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" language="groovy" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="017fe181-cd8c-4cdf-8a13-3149e2453661">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="503"/>
+	<parameter name="nomAgence" class="java.lang.String"/>
+	<parameter name="adresseAgence" class="java.lang.String"/>
+	<parameter name="telAgence" class="java.lang.String"/>
+	<parameter name="emailAgence" class="java.lang.String"/>
+	<parameter name="idLocation" class="java.lang.String"/>
+	<parameter name="idClient" class="java.lang.String"/>
+	<parameter name="idVehicule" class="java.lang.String"/>
+	<parameter name="logoLocation" class="Object" isForPrompting="false">
+		<parameterDescription><![CDATA[The letterhead image]]></parameterDescription>
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="nomCl" class="java.lang.String"/>
+	<parameter name="prenomCl" class="java.lang.String"/>
+	<parameter name="adressCl" class="java.lang.String"/>
+	<parameter name="numPermisCl" class="java.lang.String"/>
+	<parameter name="datePermisCl" class="java.lang.String"/>
+	<parameter name="lieuNaissCl" class="java.lang.String"/>
+	<parameter name="tlfn" class="java.lang.String"/>
+	<parameter name="dateNaissCl" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT * from Location,Client,Vehicule where Location.IDClient = Client.IDClient
+AND Location.IDVehicule = Vehicule.IDVehicule AND IDLocation=$P{idLocation} AND Location.IDClient=$P{idClient} AND
+ Location.IDVehicule=$P{idVehicule};]]>
+	</queryString>
+	<field name="IDLocation" class="java.lang.Object"/>
+	<field name="IDClient" class="java.lang.Object"/>
+	<field name="IDVehicule" class="java.lang.Object"/>
+	<field name="DateSortie" class="java.lang.Object"/>
+	<field name="NombreJours" class="java.lang.Object"/>
+	<field name="DateEntree" class="java.lang.Object"/>
+	<field name="HeureSortie" class="java.lang.Object"/>
+	<field name="HeureEntree" class="java.lang.Object"/>
+	<field name="MontantApaye" class="java.lang.Object"/>
+	<field name="TarifSupp" class="java.lang.Object"/>
+	<field name="Tva" class="java.lang.Object"/>
+	<field name="remise" class="java.lang.Object"/>
+	<field name="idClientS" class="java.lang.Object"/>
+	<field name="TypeClient" class="java.lang.Object"/>
+	<field name="NomSociete" class="java.lang.Object"/>
+	<field name="Nom" class="java.lang.Object"/>
+	<field name="Prenom" class="java.lang.Object"/>
+	<field name="DateNaiss" class="java.lang.Object"/>
+	<field name="LieuNaiss" class="java.lang.Object"/>
+	<field name="NumPasseport" class="java.lang.Object"/>
+	<field name="DatePasseport" class="java.lang.Object"/>
+	<field name="NumPermis" class="java.lang.Object"/>
+	<field name="DatePermis" class="java.lang.Object"/>
+	<field name="NumTel" class="java.lang.Object"/>
+	<field name="Adresse" class="java.lang.Object"/>
+	<field name="Email" class="java.lang.Object"/>
+	<field name="Remarques" class="java.lang.Object"/>
+	<field name="IDMarque" class="java.lang.Object"/>
+	<field name="NumChassis" class="java.lang.Object"/>
+	<field name="Matricule" class="java.lang.Object"/>
+	<field name="DateAssur" class="java.lang.Object"/>
+	<field name="ProchAssur" class="java.lang.Object"/>
+	<field name="DateScanner" class="java.lang.Object"/>
+	<field name="ProchScanner" class="java.lang.Object"/>
+	<field name="Kilometrage" class="java.lang.Object"/>
+	<field name="ProchVidange" class="java.lang.Object"/>
+	<field name="derniereChaine" class="java.lang.Object"/>
+	<field name="ProchChaine" class="java.lang.Object"/>
+	<field name="tarifJour" class="java.lang.Object"/>
+	<field name="NiveauCarburant" class="java.lang.Object"/>
+	<field name="modele" class="java.lang.Object"/>
+	<field name="statut" class="java.lang.Object"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="77" splitType="Stretch">
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" stretchType="RelativeToTallestObject" x="130" y="16" width="291" height="20" uuid="be59b447-739a-444d-93af-653b1cd99dff"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FACTURE DE LOCATION DE VEHICULE ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="423" y="25" width="18" height="20" uuid="e56267ba-641e-4599-9917-6226000e9f11"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="11" isBold="true" isItalic="false" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Le ]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy h.mm a">
+				<reportElement x="441" y="25" width="103" height="20" uuid="fe6f2c16-53a1-494c-880d-7fe0bf0d5966"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="11" isBold="true" isItalic="false" isUnderline="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="130" y="35" width="291" height="20" uuid="f720ebaf-a612-4928-aadd-2cf2eaf899bb"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="14" isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["N°000"+$F{IDLocation}]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="29" y="17" width="86" height="59" uuid="5f9f9621-9f47-41f5-b412-3cc2cf752a92"/>
+				<imageExpression><![CDATA[$P{logoLocation}]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="93" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="1" width="555" height="27" backcolor="#C0C0C0" uuid="d300d2be-f039-4029-a50d-5fb71e82b653"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Informations Loueur]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="9" y="32" width="78" height="20" backcolor="#C0C0C0" uuid="e396cba0-e10f-4bd6-9278-455611872f1a"/>
+				<textElement textAlignment="Center">
+					<font fontName="DejaVu Sans" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Agence  :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="10" y="62" width="78" height="21" backcolor="#C0C0C0" uuid="85a9fe33-7059-4849-b4b3-53caaac6b595"/>
+				<textElement textAlignment="Center">
+					<font fontName="DejaVu Sans" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Adresse :]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="86" y="32" width="216" height="22" uuid="de74cd59-3094-48be-bc08-e5fed92dee25"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{nomAgence}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="87" y="62" width="216" height="22" uuid="b2a4abc7-d149-44a8-8930-b9d539bb0545"/>
+				<textElement>
+					<font fontName="Arial" size="11" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{adresseAgence}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Transparent" x="304" y="32" width="76" height="20" backcolor="#C0C0C0" uuid="9d05146e-e3be-424c-b4f9-0cb3a8a04795"/>
+				<textElement textAlignment="Center">
+					<font fontName="DejaVu Sans" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[N°TEL :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="305" y="62" width="76" height="20" backcolor="#C0C0C0" uuid="3b5d85a2-96b7-4576-84ef-0ab88870d7b4"/>
+				<textElement textAlignment="Center">
+					<font fontName="DejaVu Sans" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[N°registre:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="385" y="32" width="170" height="22" uuid="4bb4236c-5040-4213-944e-5d3893d9673c"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{telAgence}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="385" y="62" width="170" height="22" uuid="cd2d6115-0688-4d0d-97f8-32c45a4efd52"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{emailAgence}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="204">
+			<staticText>
+				<reportElement mode="Transparent" x="8" y="77" width="78" height="20" backcolor="#C0C0C0" uuid="6cfb994e-c366-4625-afa1-718ba9d896aa"/>
+				<textElement textAlignment="Center">
+					<font fontName="DejaVu Sans" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Nom :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="8" y="102" width="78" height="20" backcolor="#C0C0C0" uuid="e0f4642c-d610-46af-9d5f-1ef04465598f"/>
+				<textElement textAlignment="Center">
+					<font fontName="DejaVu Sans" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Adresse :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="8" y="128" width="78" height="20" backcolor="#C0C0C0" uuid="572bebf0-178e-473c-96c6-cc340a8a2a16"/>
+				<textElement textAlignment="Center">
+					<font fontName="DejaVu Sans" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[N°TEL : ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="8" y="154" width="78" height="20" backcolor="#C0C0C0" uuid="8f4980c5-2781-4db8-8e4e-b47ea88a6443"/>
+				<textElement textAlignment="Center">
+					<font fontName="DejaVu Sans" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Né(e) à :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="8" y="181" width="78" height="20" backcolor="#C0C0C0" uuid="2262274e-e499-4506-85e4-0fc1214ec117"/>
+				<textElement textAlignment="Center">
+					<font fontName="DejaVu Sans" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[N°Permis :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="176" y="154" width="22" height="20" backcolor="#C0C0C0" uuid="08a941e0-6af0-4ffe-853b-a0f78ba6d057"/>
+				<textElement textAlignment="Center">
+					<font fontName="DejaVu Sans" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Le :]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="85" y="77" width="192" height="22" uuid="db088d2f-e867-486a-8eba-47c61279a54b"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Nom}+" "+$F{Prenom}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="85" y="102" width="192" height="22" uuid="c045d15e-ed74-4dc7-8049-66d607be6615"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Adresse}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="85" y="128" width="192" height="22" uuid="42fb0b4f-c0cc-40df-969d-4c2c6d6607e3"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NumTel}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="85" y="154" width="90" height="22" uuid="24bb43a0-b823-4e0c-87d6-7088ce92faf6"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{LieuNaiss}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="199" y="154" width="78" height="22" uuid="d6fc8d66-a4ae-46bf-bf31-ffadefaafb8a"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DateNaiss}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="85" y="181" width="72" height="22" uuid="d527cdaa-46ff-429d-9ac8-d405f839a537"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NumPermis}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Transparent" x="158" y="181" width="40" height="22" backcolor="#C0C0C0" uuid="8b4fb9ba-c411-448f-8d3b-be3c35d73b64"/>
+				<textElement textAlignment="Center">
+					<font fontName="DejaVu Sans" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[émis le :]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="199" y="181" width="78" height="22" uuid="2c35f8f2-09b1-49c1-96d6-fb679f3810e0"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DatePermis}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="50" width="277" height="24" forecolor="#000000" backcolor="#C0C0C0" uuid="1e06f222-0947-47e0-903d-61cd4df532dd"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="14" isBold="true" isItalic="false" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Conducteur principal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="278" y="50" width="277" height="24" forecolor="#000000" backcolor="#C0C0C0" uuid="36a52600-59d6-4ca5-9a61-b0268af86f63"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="14" isBold="true" isItalic="false" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Conducteur secondaire]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="278" y="77" width="78" height="20" backcolor="#C0C0C0" uuid="b1d52931-5523-4dd7-8edc-9f7c316f14b4"/>
+				<textElement textAlignment="Center">
+					<font fontName="DejaVu Sans" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Nom :]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="362" y="77" width="193" height="22" uuid="6ba2ea77-4489-4cab-8525-a1eaf4937ae8"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{nomCl}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Transparent" x="278" y="102" width="78" height="20" backcolor="#C0C0C0" uuid="19d44ef7-8088-43e4-af5e-fae5d50e69d3"/>
+				<textElement textAlignment="Center">
+					<font fontName="DejaVu Sans" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Adresse  :]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="362" y="102" width="193" height="22" uuid="6f5994c8-d32d-4cc3-9301-497e72d859a2"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{adressCl}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Transparent" x="278" y="128" width="78" height="20" backcolor="#C0C0C0" uuid="63cf0fb6-231f-4880-9155-128a63634cf9"/>
+				<textElement textAlignment="Center">
+					<font fontName="DejaVu Sans" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[N°TEL :]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="362" y="128" width="193" height="22" uuid="29796e71-9460-43ca-b27c-effdf12db606"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{tlfn}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Transparent" x="278" y="154" width="78" height="20" backcolor="#C0C0C0" uuid="43765adb-8013-4620-b076-9e7fad1ac026"/>
+				<textElement textAlignment="Center">
+					<font fontName="DejaVu Sans" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Né(e) à :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="278" y="181" width="78" height="20" backcolor="#C0C0C0" uuid="f148f155-6408-47e2-ae01-1ddbb5d6085c"/>
+				<textElement textAlignment="Center">
+					<font fontName="DejaVu Sans" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[N°Permis  :]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="362" y="154" width="90" height="22" uuid="34ee7e1e-0d25-467c-858e-37dc08fe7e67"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{lieuNaissCl}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="362" y="181" width="90" height="22" uuid="a292a417-49e8-4f7c-999b-478f314e0214"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{numPermisCl}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Transparent" x="454" y="154" width="22" height="20" backcolor="#C0C0C0" uuid="c4750b1c-f296-4ad0-bda5-30ddf8be66e6"/>
+				<textElement textAlignment="Center">
+					<font fontName="DejaVu Sans" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Le :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="454" y="181" width="22" height="20" backcolor="#C0C0C0" uuid="0ad6e780-dad1-48b2-95b7-bc9445ef69eb"/>
+				<textElement textAlignment="Center">
+					<font fontName="DejaVu Sans" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Le :]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="474" y="154" width="78" height="22" uuid="6a63ecfb-9410-4d1d-9c41-03f8d4c3b650"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{dateNaissCl}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="475" y="181" width="78" height="22" uuid="005adafb-c81e-48a5-9d9f-2942fc9e79f0"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{datePermisCl}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Transparent" x="15" y="28" width="78" height="20" backcolor="#C0C0C0" uuid="56cea500-a2e8-4d2b-901b-4e71234c6982"/>
+				<textElement textAlignment="Center">
+					<font fontName="DejaVu Sans" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Type Client :]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="92" y="28" width="192" height="22" uuid="ccd41606-42de-4198-9d40-4bc19a9ef898"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{TypeClient}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Transparent" x="283" y="28" width="76" height="20" backcolor="#C0C0C0" uuid="d9f1b8b4-356f-428e-89d0-56d3d68fec5f"/>
+				<textElement textAlignment="Center">
+					<font fontName="DejaVu Sans" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Société :]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="367" y="28" width="177" height="22" uuid="f88cac2c-b152-4aea-9466-8eb4e3a077ed"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NomSociete}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="-3" width="555" height="27" backcolor="#C0C0C0" uuid="8283f630-6337-48df-bef1-ca8190dac9ed"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Informations Client]]></text>
+			</staticText>
+		</band>
+		<band height="133">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="3" width="277" height="27" forecolor="#000000" backcolor="#C0C0C0" uuid="0b4b27e1-25f2-4cfb-b426-f4eafdbba2f4"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="14" isBold="true" isItalic="false" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Informations Véhicule]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="278" y="3" width="277" height="27" forecolor="#000000" backcolor="#C0C0C0" uuid="35207eab-192c-48e5-9f85-9900254cc7ee"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="14" isBold="true" isItalic="false" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Détails Location]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="8" y="35" width="78" height="20" backcolor="#C0C0C0" uuid="98d501f0-529f-472c-9201-bf5490d086e0"/>
+				<textElement textAlignment="Center">
+					<font fontName="DejaVu Sans" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Matricule :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="8" y="85" width="78" height="20" backcolor="#C0C0C0" uuid="3aaaefd0-5e29-4a3f-8ec4-58993629da71"/>
+				<textElement textAlignment="Center">
+					<font fontName="DejaVu Sans" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Kilométrage :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="9" y="110" width="78" height="20" backcolor="#C0C0C0" uuid="00aadda3-ad16-4ee7-afee-4317c375b5fd"/>
+				<textElement textAlignment="Center">
+					<font fontName="DejaVu Sans" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Tarif journée :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="8" y="60" width="78" height="20" backcolor="#C0C0C0" uuid="42dff864-3eb1-4ccd-bbc7-67dcb5ad4056"/>
+				<textElement textAlignment="Center">
+					<font fontName="DejaVu Sans" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Modèle :]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="85" y="35" width="192" height="22" uuid="1d6fc6b3-0822-4ab9-90b7-2ca87e43be17"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Matricule}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="85" y="60" width="192" height="22" uuid="b814dba1-82a2-47d7-ad75-7b81f91a4f43"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{modele}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="85" y="85" width="91" height="22" uuid="ced78282-95fd-41b0-a29b-c41c53ad400c"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Kilometrage}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="85" y="110" width="90" height="22" uuid="adf9e765-8a3c-4f06-8b77-2dc362c92eb1"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tarifJour}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Transparent" x="278" y="60" width="78" height="20" backcolor="#C0C0C0" uuid="1d0013a6-e469-467a-acf3-d53894116dc3"/>
+				<textElement textAlignment="Center">
+					<font fontName="DejaVu Sans" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Heure sortie :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="340" y="85" width="78" height="20" backcolor="#C0C0C0" uuid="52ebf588-d792-4233-b8f6-56b13f36d0f2"/>
+				<textElement textAlignment="Center">
+					<font fontName="DejaVu Sans" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Retour prévu :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="340" y="110" width="78" height="20" backcolor="#C0C0C0" uuid="167e321b-755b-464b-924e-c4623587e921"/>
+				<textElement textAlignment="Center">
+					<font fontName="DejaVu Sans" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Heure prévu :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="278" y="35" width="78" height="20" backcolor="#C0C0C0" uuid="6108d5c3-ced9-481d-a2f4-702f744dfacd"/>
+				<textElement textAlignment="Center">
+					<font fontName="DejaVu Sans" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Date sortie :]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="362" y="35" width="193" height="22" uuid="8cad06e7-98ef-4009-aad4-c12c4f4c2f40"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DateSortie}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="362" y="60" width="114" height="22" uuid="9ca96452-9853-47b5-af58-00427d0897ea"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{HeureSortie}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="421" y="85" width="115" height="22" uuid="78867fb1-2391-407d-8cbe-9a124186fb1e"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DateEntree}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="418" y="110" width="112" height="22" uuid="837af97b-c579-4377-95d8-7976d9e82623"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{HeureEntree}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Transparent" x="212" y="110" width="62" height="20" backcolor="#C0C0C0" uuid="5d357976-9d2d-4bca-bd67-a6490eafacd3"/>
+				<textElement textAlignment="Center">
+					<font fontName="DejaVu Sans" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Carburant :]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="277" y="110" width="59" height="22" uuid="3b0cd382-5f7c-41fe-97bf-dc3b41f89f12"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NiveauCarburant}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Transparent" x="177" y="86" width="78" height="20" backcolor="#C0C0C0" uuid="0b60dd41-93a5-49e8-96e4-44f22e0267c1"/>
+				<textElement textAlignment="Center">
+					<font fontName="DejaVu Sans" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[N°chaisse :]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="254" y="86" width="91" height="22" uuid="b71d4af6-91c2-4fa8-8831-b3faf0dc6929"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NumChassis}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="109">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="1" width="555" height="27" forecolor="#000000" backcolor="#C0C0C0" uuid="8b07cee6-e4e4-456a-b319-cf23d40c90f9"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="14" isBold="true" isItalic="false" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Forfait]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="29" width="277" height="26" forecolor="#000000" backcolor="#C0C0C0" uuid="e3aec4c0-6f3e-4c17-9a14-25a5fa55eba5"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="12" isBold="true" isItalic="false" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Montant Total ]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="278" y="29" width="277" height="26" backcolor="#C0C0C0" uuid="ead1933b-bdb1-4072-8d05-a2194e069d43"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{MontantApaye}+" DA"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="56" width="277" height="26" forecolor="#000000" backcolor="#C0C0C0" uuid="aab7fa15-f220-4b17-b899-8d60e506f197"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="12" isBold="true" isItalic="false" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Remise ]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="278" y="56" width="33" height="26" backcolor="#C0C0C0" uuid="fd141f4d-2892-4db3-996e-db94c0283122"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{remise}+"%"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="83" width="277" height="26" forecolor="#000000" backcolor="#C0C0C0" uuid="744c2182-6ea4-41fa-a2b1-7ed009f426a1"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="12" isBold="true" isItalic="false" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[TVA ]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="278" y="83" width="33" height="26" backcolor="#C0C0C0" uuid="c22ef321-c128-4689-87da-e74e612ea4de"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Tva}+"%"]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="452" y="56" width="103" height="26" backcolor="#C0C0C0" uuid="d96e8152-0195-4d03-b0dd-1a1dedab7210"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{remise}*$F{MontantApaye}/100+" DA"]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="452" y="83" width="103" height="26" backcolor="#C0C0C0" uuid="c85a72f6-4213-43ee-8198-93f448d08ddb"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{MontantApaye}*$F{Tva}/100+" DA"]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="172">
+			<rectangle>
+				<reportElement x="14" y="7" width="264" height="160" uuid="ae2a30b0-112d-4cdc-aa7a-4c39d765820e"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="278" y="7" width="263" height="160" uuid="19c72f75-6c10-4275-b080-f7c08b58610e"/>
+			</rectangle>
+			<staticText>
+				<reportElement mode="Transparent" x="100" y="7" width="90" height="20" backcolor="#C0C0C0" uuid="c75b0103-b307-4b96-b39c-8906507a0f42"/>
+				<textElement textAlignment="Center">
+					<font fontName="DejaVu Sans" size="12"/>
+				</textElement>
+				<text><![CDATA[LE LOUEUR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="363" y="7" width="90" height="20" backcolor="#C0C0C0" uuid="b31eb59c-a39c-48b3-9460-3228e30e1fb2"/>
+				<textElement textAlignment="Center">
+					<font fontName="DejaVu Sans" size="12"/>
+				</textElement>
+				<text><![CDATA[LE LOCATAIRE]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="20" y="29" width="192" height="22" uuid="63f08e3a-a4e8-4b55-8b0f-d147bd929ed2"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{nomAgence}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="283" y="29" width="192" height="22" uuid="56f89eed-7bba-45d8-ad5e-40d496c302e6"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Nom}+" "+$F{Prenom}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="20" y="142" width="100" height="20" uuid="88f0c6b8-dda0-4077-9360-54dfdb1fde16"/>
+				<text><![CDATA[Signature]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="283" y="142" width="100" height="20" uuid="a4e3782f-11e9-4644-b1e2-32fa9f7d0dea"/>
+				<text><![CDATA[Signature]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="1" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
